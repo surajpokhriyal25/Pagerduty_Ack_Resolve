@@ -48,10 +48,10 @@ inc = []
 CONTENT = "."
 
 # Update to match your email address
-EMAIL = 'lucas@pagerduty.com'
+EMAIL = ''
 
 # Update to match your chosen parameters for the incident
-# INCIDENT_ID = 'PQQVDM1'
+
 TYPE = 'incident'
 SUMMARY = '.'
 STATUS = 'acknowledged'
@@ -89,27 +89,6 @@ def list_incidents():
             print(out['incidents'][i])
             update_incident(out['incidents'][i]['id'])
 
-# def trigger_incident(i):
-#     headers = {
-#         'Authorization': 'Token token={0}'.format(API_KEY),
-#         'Content-type': 'application/json',
-#     }
-#     payload = json.dumps({
-#       "service_key": "e05fd2270e2c4c028f3ae2388bbc09eb",
-#       "incident_key": i,
-#       "event_type": "acknowledge",
-#       "description": "not Working .",
-#       "details": {
-#         "work started": "2010-06-10 05:43"
-#         }
-#     })
-#     r = requests.post(
-#                     'https://events.pagerduty.com/generic/2010-04-15/create_event.json',
-#                     headers=headers,
-#                     data=payload,
-#     )
-#     print r.status_code
-#     print r.text
 
 
 def update_incident(incident_update):
@@ -135,29 +114,6 @@ def update_incident(incident_update):
     print(r.json())
 
 
-
-# def snooze_incident(incident_id):
-#     url = 'https://api.pagerduty.com/incidents/{id}/snooze'.format(
-#         id=incident_id
-#     )
-#     headers = {
-#         'Accept': 'application/vnd.pagerduty+json;version=2',
-#         'Authorization': 'Token token={token}'.format(token=API_KEY),
-#         'Content-type': 'application/json',
-#         'From': EMAIL
-#     }
-#     payload = {
-#         'content': CONTENT,
-#         'duration': 60 * 60 * 8  # 8 hours
-#     }
-#     r = requests.post(url, headers=headers, data=json.dumps(payload))
-#     print('Status Code: {code}'.format(code=r.status_code))
-
-
 if __name__ == '__main__':
     list_incidents()
-    # print(inc)
-    # for i in inc:
-    #     print(i)
-    #     trigger_incident(i)
-    # inc = []
+
